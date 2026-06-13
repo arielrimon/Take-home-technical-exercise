@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Transient review backups
+.review_backup_*/
+
+# The original assignment brief (company material) is kept local, not published.
+*.docx
+
+# Large / licensed data artifacts are not committed.
+# The Apache log and the MaxMind GeoLite2 database must be fetched locally
+# (see README). They are intentionally git-ignored.
+data/apache_log.txt
+data/*.mmdb

@@ -1,0 +1,35 @@
+[project]
+name = "logstats"
+version = "1.0.0"
+description = "Statistical reporting module for Apache web server logs (Country / OS / Browser breakdown)."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "geoip2>=4.8",
+    "user-agents>=2.2",
+    "pydantic>=2.6",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+logstats = "logstats.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logstats"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+# Benchmarks are slow (they build a large log and time it), so they are
+# deselected by default; run them explicitly with `pytest -m benchmark`.
+addopts = "-q -m 'not benchmark'"
+markers = [
+    "benchmark: slow scaling/throughput benchmarks (run with: pytest -m benchmark)",
+]
